@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableHighlight } from 'react-native'
 import { connect } from 'react-redux'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import { Navigation } from 'react-native-navigation'
+
+import { Button } from 'react-native-paper'
 
 import { saveToken } from '../redux/actions/token'
 
-const HomeScreens = ({ addToken }) => {
+const HomeScreens = ({ addToken, componentId }) => {
 
     const [text, setText] = useState(null)
 
@@ -29,6 +31,28 @@ const HomeScreens = ({ addToken }) => {
             >
                 <Text style={styles.buttonText}>Save token</Text>
             </TouchableHighlight>
+            <Button
+                style={{
+                    marginTop: 20
+                }}
+                icon="add-shopping-cart"
+                mode="contained"
+                onPress={() => {
+                    Navigation.push(componentId, {
+                        component: {
+                            name: 'List'
+                        },
+                        options: {
+                            topBar: {
+                                title: {
+                                    text: 'List'
+                                }
+                            }
+                        }
+                    })
+                }}>
+                Go to Lists
+            </Button>
         </View>
     )
 }
@@ -45,7 +69,7 @@ HomeScreens.options = {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return{
+    return {
         addToken: (tk) => dispatch(saveToken(tk))
     }
 }
