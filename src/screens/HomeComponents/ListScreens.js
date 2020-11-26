@@ -16,4 +16,15 @@ const ListScreens = () => {
     )
 }
 
+ListScreens.options = {
+    topBar: {
+        title: {
+            text: 'Filter List'
+        }
+    },
+    bottomTab: {
+        text: 'Filter List'
+    }
+}
+
 export default ListScreens
