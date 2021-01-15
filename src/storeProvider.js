@@ -4,7 +4,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { DefaultTheme ,Provider as PaperProvider } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import configureStore from './store'
+import configureStore from '@modules'
 
 const { store, persistor } = configureStore()
 

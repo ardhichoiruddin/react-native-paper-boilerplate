@@ -1,23 +1,25 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableHighlight } from 'react-native'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Navigation } from 'react-native-navigation'
-
 import { Button } from 'react-native-paper'
+import { apply } from 'osmicsx'
 
-import { saveToken } from '../redux/actions/token'
+import { SAVE_TOKEN } from '@modules/account/types'
 
-const HomeScreens = ({ addToken, componentId }) => {
+const HomeScreens = ({ componentId }) => {
+
+    const dispatch = useDispatch()
 
     const [text, setText] = useState(null)
 
     const tokenHandler = () => {
-        addToken(text)
+        dispatch({ type: SAVE_TOKEN, token: text })
         setText(null)
     }
 
     return (
-        <View style={styles.container}>
+        <View style={apply("px-4 py-4")}>
             <TextInput
                 style={styles.textInput}
                 placeholder="write token"
@@ -68,21 +70,11 @@ HomeScreens.options = {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addToken: (tk) => dispatch(saveToken(tk))
-    }
-}
 
-
-export default connect(0, mapDispatchToProps)(HomeScreens)
+export default HomeScreens
 
 
 const styles = StyleSheet.create({
-    container: {
-        paddingVertical: 10,
-        paddingHorizontal: 20
-    },
     textInput: {
         borderWidth: 1,
         borderColor: 'red',

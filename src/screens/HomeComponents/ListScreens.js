@@ -3,8 +3,6 @@ import { View, Text } from 'react-native'
 import { List } from 'react-native-paper'
 import { apply } from 'osmicsx'
 
-import { globalStyle } from '../../styles/globalStyles'
-
 const ListScreens = () => {
 
     useEffect(() => {
@@ -12,7 +10,7 @@ const ListScreens = () => {
     }, [])
 
     return (
-        <View style={[globalStyle.container, apply("flex bg-gray-800")]}>
+        <View style={apply("flex px-4 py-4 bg-gray-800")}>
             <List.Section>
                 <List.Subheader style={apply("text-white")}>Some title</List.Subheader>
                 <List.Item 

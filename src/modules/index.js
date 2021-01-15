@@ -2,7 +2,7 @@ import { createStore, combineReducers } from 'redux'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { persistStore, persistReducer } from 'redux-persist'
 
-import tokenReducer from './reducers/tokenReducer'
+import tokenReducer from '@modules/account/reducers'
 
 const rootReducer = combineReducers({
     token: tokenReducer
@@ -10,7 +10,8 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
     key: 'root',
-    storage: AsyncStorage
+    storage: AsyncStorage,
+    whitelist: ['token']
 }
 
 const persistedReduce = persistReducer(persistConfig, rootReducer)

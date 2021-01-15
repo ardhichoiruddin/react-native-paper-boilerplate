@@ -1,4 +1,4 @@
-import { SAVE_TOKEN, DELETE_TOKEN } from '../actions/tokenTypes'
+import { SAVE_TOKEN, DELETE_TOKEN } from './types'
 
 const initialState = {
     token: null
